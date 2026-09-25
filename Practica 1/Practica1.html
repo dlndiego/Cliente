@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Practica1.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h2 id="recordando-html">RECORDANDO HTML</h2>
+<pre class="hljs"><code><div>                                      `ATENCION´
+En este documento vas a ver el codigo HTML y el resultado de dicho codigo, si necesitas ver los documentos HTML te los puedo pasar de todas formas todos los codigos son copiables para probarlos ...
+</div></code></pre>
+<h6 id="ejercicio-1"><code>Ejercicio 1</code></h6>
+<p>Para el primer ejercicio se nos presenta un codigo <strong>HTML</strong> que contiene errores.</p>
+<ul>
+<li>Este es el <em>CODIGO</em>:</li>
+</ul>
+<pre class="hljs"><code><div>  &lt;DOCTYPE html&gt;
+&lt;html&gt;
+ &lt;head&gt;
+ &lt;/meta charset=&quot;utf-8&quot;&gt;
+ &lt;meta name=&quot;description&quot; content=&quot;Ejercicio 1 - Busca y corrige los
+errores&quot;&gt;
+ &lt;body&gt;
+ &lt;/head&gt;
+ &lt;title&gt;Un documento mal estructurado&lt;/title&gt;
+
+ &lt;h1&gt;Aprender HTML es muy divertido&lt;/h1&gt;
+
+ &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam
+optio nesciunt atque iure animi dicta velit
+
+ &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam
+optio nesciunt atque iure animi dicta velit&lt;/p&gt;
+
+
+ &lt;/body&gt;
+ &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam
+optio nesciunt atque iure animi dicta velit&lt;/p&gt;
+&lt;html&gt;
+</div></code></pre>
+<ul>
+<li>Y este seria el codigo bien hecho</li>
+</ul>
+<pre class="hljs"><code><div>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;es&quot;&gt;
+    &lt;head&gt;
+        &lt;meta charset=&quot;utf-8&quot;&gt;
+        &lt;title&gt;Un documento mal estructurado&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;h1&gt;Aprender HTML es muy divertido&lt;/h1&gt;
+
+        &lt;p&gt; ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam
+            optio nesciunt atque iure animi dicta velit&lt;/p&gt;
+
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam
+            optio nesciunt atque iure animi dicta velit&lt;/p&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae quam
+        optio nesciunt atque iure animi dicta velit&lt;/p&gt;
+    &lt;/body&gt;
+    
+
+&lt;/html&gt;
+</div></code></pre>
+<h6 id="ejercicio-2"><code>Ejercicio 2</code></h6>
+<p>Nos dan un codigo sin ninguna etiqueta personalizable como estas:</p>
+<p><code>p, strong, i, em, b, blockquote, hr, br, h1, h2, h3</code></p>
+<p>y el codigo queda tal que asi:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Ejercicio html etiquetas de texto básicas<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+Berners-Lee trabajó en el CERN desde junio hasta diciembre de 1980. Durante ese tiempo, propuso
+un proyecto basado en el hipertexto para facilitar la forma de compartir y la puesta al día de la
+información entre investigadores. En este periodo también construyó un programa llamado ENQUIRE
+que no llegó a ver la luz.1
+Después de dejar el CERN, en 1980, se fue a trabajar a la empresa de John Poole Image Computer
+Systems Ltd., pero regresó al CERN otra vez en 1984.
+2
+En 1989, el CERN era el nodo de Internet más grande de Europa y Berners-Lee vio la oportunidad de
+unir Internet y el hipertexto (HTTP y HTML), de lo que surgiría la World Wide Web. Desarrolló su
+primera propuesta de la Web el 12 de marzo de 1989,2 pero no tuvo mucho eco, por lo que en 1990 y
+con la ayuda de Robert Cailliau, hicieron una revisión que fue aceptada por su gerente, Mike
+Sendall. Usó ideas similares a las que había usado en el sistema Enquire, para crear la World
+Wide Web, para esto diseñó y construyó el primer navegador (llamado WorldWideWeb y desarrollado
+con NEXTSTEP) y el primer servidor Web al que llamó httpd (HyperText Transfer Protocol daemon).
+El primer servidor Web se encontraba en el CERN y fue puesto en línea el 6 de agosto de 1991.
+Esto proporcionó una explicación sobre lo que era el World Wide Web, cómo uno podría tener un
+navegador y cómo establecer un servidor Web. Este fue también el primer directorio Web del mundo,
+ya que Berners-Lee mantuvo una lista de otros sitios Web aparte del suyo. Debido a que tanto el
+software del servidor como del cliente fue liberado de forma gratuita desde el CERN, el corazón
+de Internet Europeo en esa época, su difusión fue muy rápida. El número de servidores Web pasó de
+veintiséis en 1992 a doscientos en octubre de 1995 lo que refleja cual fue la velocidad de la
+difusión de internet.
+En 1994 entró en el Laboratorio de Ciencias de la Computación e Inteligencia Artificial del
+Massachusetts Institute of Technology. Se trasladó a EE. UU. y puso en marcha el W3C, que dirige
+actualmente. El W3C es un organismo internacional de estandarización de tecnologías Web dirigido
+conjuntamente por el Instituto Tecnológico de Massachusetts, el ERCIM francés y la Universidad de
+Keiō en Japón. Este organismo decidió que todos sus estándares fuesen libres, es decir, que los
+pudiese utilizar todo el mundo libremente sin coste alguno, lo que sin lugar a dudas fue una de
+las grandes razones para que la Web haya llegado a tener la importancia que tiene hoy en día.
+En su libro Tejiendo la red, publicado en 1999, Berners-Lee explica por qué la tecnología web es
+libre y gratis. Se considera al mismo tiempo el inventor y el protector de la web.
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>y visto desde la pagina web queda asi.</p>
+<h4 id="base-entregada-por-el-profesor"><code>Base entregada por el profesor:</code></h4>
+<!DOCTYPEhtml>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+Berners-Lee trabajó en el CERN desde junio hasta diciembre de 1980. Durante ese tiempo, propuso
+un proyecto basado en el hipertexto para facilitar la forma de compartir y la puesta al día de la
+información entre investigadores. En este periodo también construyó un programa llamado ENQUIRE
+que no llegó a ver la luz.1
+Después de dejar el CERN, en 1980, se fue a trabajar a la empresa de John Poole Image Computer
+Systems Ltd., pero regresó al CERN otra vez en 1984.
+2
+En 1989, el CERN era el nodo de Internet más grande de Europa y Berners-Lee vio la oportunidad de
+unir Internet y el hipertexto (HTTP y HTML), de lo que surgiría la World Wide Web. Desarrolló su
+primera propuesta de la Web el 12 de marzo de 1989,2 pero no tuvo mucho eco, por lo que en 1990 y
+con la ayuda de Robert Cailliau, hicieron una revisión que fue aceptada por su gerente, Mike
+Sendall. Usó ideas similares a las que había usado en el sistema Enquire, para crear la World
+Wide Web, para esto diseñó y construyó el primer navegador (llamado WorldWideWeb y desarrollado
+con NEXTSTEP) y el primer servidor Web al que llamó httpd (HyperText Transfer Protocol daemon).
+El primer servidor Web se encontraba en el CERN y fue puesto en línea el 6 de agosto de 1991.
+Esto proporcionó una explicación sobre lo que era el World Wide Web, cómo uno podría tener un
+navegador y cómo establecer un servidor Web. Este fue también el primer directorio Web del mundo,
+ya que Berners-Lee mantuvo una lista de otros sitios Web aparte del suyo. Debido a que tanto el
+software del servidor como del cliente fue liberado de forma gratuita desde el CERN, el corazón
+de Internet Europeo en esa época, su difusión fue muy rápida. El número de servidores Web pasó de
+veintiséis en 1992 a doscientos en octubre de 1995 lo que refleja cual fue la velocidad de la
+difusión de internet.
+En 1994 entró en el Laboratorio de Ciencias de la Computación e Inteligencia Artificial del
+Massachusetts Institute of Technology. Se trasladó a EE. UU. y puso en marcha el W3C, que dirige
+actualmente. El W3C es un organismo internacional de estandarización de tecnologías Web dirigido
+conjuntamente por el Instituto Tecnológico de Massachusetts, el ERCIM francés y la Universidad de
+Keiō en Japón. Este organismo decidió que todos sus estándares fuesen libres, es decir, que los
+pudiese utilizar todo el mundo libremente sin coste alguno, lo que sin lugar a dudas fue una de
+las grandes razones para que la Web haya llegado a tener la importancia que tiene hoy en día.
+En su libro Tejiendo la red, publicado en 1999, Berners-Lee explica por qué la tecnología web es
+libre y gratis. Se considera al mismo tiempo el inventor y el protector de la web.
+</body>
+</html>
+<hr>
+<p>Y el codigo que yo he hecho para que quede igual que la imagen es este:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Ejercicio html etiquetas de texto básicas<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;utf-8&quot;</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Biografia de Tim Berners Lee<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>Berners-Lee<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> trabajó en el <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>CERN<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> desde junio hasta diciembre de 1980. Durante ese tiempo, propuso
+un proyecto basado en el hipertexto para facilitar la forma de compartir y la puesta al día de la
+información entre investigadores. En este periodo también construyó un programa llamado <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>ENQUIRE<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>.
+que no llegó a ver la luz.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Después de dejar el <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>CERN<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>, en 1980, se fue a trabajar a la empresa de <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>John Poole Image Computer
+Systems Ltd<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>, pero regresó al CERN otra vez en 1984.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>El nacimiento de la web<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>En 1989, el CERN era el nodo de Internet más grande de Europa y Berners-Lee vio la oportunidad de
+unir Internet y el hipertexto (HTTP y HTML), de lo que surgiría la World Wide Web.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Desarrolló su primera propuesta de la Web el 12 de marzo de 1989,2 pero no tuvo mucho eco, por lo que en 1990 y
+con la ayuda de <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Robert Cailliau<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>, hicieron una revisión que fue aceptada por su gerente, <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Mike
+Sendall<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+<span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Usó ideas similares a las que había usado en el sistema Enquire, para crear la  <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>World
+    Wide Web<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> , para esto diseñó y construyó el primer navegador (llamado WorldWideWeb y desarrollado
+    con NEXTSTEP) y el primer servidor Web al que llamó httpd (HyperText Transfer Protocol daemon).<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>La democratizacion de la web<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>El <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>primer servidor Web<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> se encontraba en el CERN y fue puesto en línea el 6 de agosto de 1991.
+Esto proporcionó una explicación sobre lo que era el World Wide Web, cómo uno podría tener un
+navegador y cómo establecer un servidor Web. Este fue también el primer directorio Web del mundo,
+ya que Berners-Lee mantuvo una lista de otros sitios Web aparte del suyo. <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Debido a que tanto <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>el software del servidor como del cliente fue liberado de forma gratuita<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> desde el CERN, el corazón
+de Internet Europeo en esa época, su difusión fue muy rápida. El número de servidores Web pasó de
+veintiséis en 1992 a doscientos en octubre de 1995 lo que refleja cual fue la velocidad de la
+difusión de internet.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">h3</span>&gt;</span>El nacimiento del W3C<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>En 1994 entró en el <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span> Laboratorio de Ciencias de la Computación e Inteligencia Artificial del
+Massachusetts Institute of Technology<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>. Se trasladó a EE. UU. y puso en marcha el <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>W3C<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>, que dirige
+actualmente.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span> 
+
+<span class="hljs-tag">&lt;<span class="hljs-name">blockquote</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>El <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>W3C<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span> es un organismo internacional de estandarización de tecnologías Web dirigido
+    conjuntamente por el <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Instituto Tecnológico de Massachusetts<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>, el <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>ERCIM francés<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> y la <span class="hljs-tag">&lt;<span class="hljs-name">i</span>&gt;</span>Universidad de
+    Keiō en Japón<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>. Este organismo decidió que todos sus estándares fuesen libres, es decir, que los
+    pudiese utilizar todo el mundo libremente sin coste alguno, lo que sin lugar a dudas fue una de
+    las grandes razones para que la Web haya llegado a tener la importancia que tiene hoy en día.
+    <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">blockquote</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>En su libro Tejiendo la red, publicado en 1999, Berners-Lee explica por qué <span class="hljs-tag">&lt;<span class="hljs-name">b</span>&gt;</span>la tecnología web es
+libre y gratis. Se considera al mismo tiempo el inventor y el protector de la web<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<h4 id="base--cosas-añadidas-por-mi"><code>Base + cosas añadidas por mi:</code></h4>
+<!DOCTYPEhtml>
+<html>
+<head>
+<meta charset="utf-8"/>
+</head>
+<body>
+    <h2>Biografia de Tim Berners Lee</h2>
+<p><b>Berners-Lee</b> trabajó en el <b>CERN</b> desde junio hasta diciembre de 1980. Durante ese tiempo, propuso
+un proyecto basado en el hipertexto para facilitar la forma de compartir y la puesta al día de la
+información entre investigadores. En este periodo también construyó un programa llamado <b>ENQUIRE</b>.
+que no llegó a ver la luz.</p>
+<p>Después de dejar el <b>CERN</b>, en 1980, se fue a trabajar a la empresa de <i>John Poole Image Computer
+Systems Ltd</i>, pero regresó al CERN otra vez en 1984.</p>
+<h3>El nacimiento de la web</h3>
+<p>En 1989, el CERN era el nodo de Internet más grande de Europa y Berners-Lee vio la oportunidad de
+unir Internet y el hipertexto (HTTP y HTML), de lo que surgiría la World Wide Web.</p> 
+<p>Desarrolló su primera propuesta de la Web el 12 de marzo de 1989,2 pero no tuvo mucho eco, por lo que en 1990 y
+con la ayuda de <i>Robert Cailliau</i>, hicieron una revisión que fue aceptada por su gerente, <i>Mike
+Sendall</i>.</p> 
+<blockquote>
+    <p>Usó ideas similares a las que había usado en el sistema Enquire, para crear la  <b>World
+    Wide Web</b> , para esto diseñó y construyó el primer navegador (llamado WorldWideWeb y desarrollado
+    con NEXTSTEP) y el primer servidor Web al que llamó httpd (HyperText Transfer Protocol daemon).</p>
+</blockquote>
+<h3>La democratizacion de la web</h3>
+<p>El <b>primer servidor Web</b> se encontraba en el CERN y fue puesto en línea el 6 de agosto de 1991.
+Esto proporcionó una explicación sobre lo que era el World Wide Web, cómo uno podría tener un
+navegador y cómo establecer un servidor Web. Este fue también el primer directorio Web del mundo,
+ya que Berners-Lee mantuvo una lista de otros sitios Web aparte del suyo. </p>
+<p>Debido a que tanto <b>el software del servidor como del cliente fue liberado de forma gratuita</b> desde el CERN, el corazón
+de Internet Europeo en esa época, su difusión fue muy rápida. El número de servidores Web pasó de
+veintiséis en 1992 a doscientos en octubre de 1995 lo que refleja cual fue la velocidad de la
+difusión de internet.</p>
+<h3>El nacimiento del W3C</h3>
+<p>En 1994 entró en el <i> Laboratorio de Ciencias de la Computación e Inteligencia Artificial del
+Massachusetts Institute of Technology</i>. Se trasladó a EE. UU. y puso en marcha el <b>W3C</b>, que dirige
+actualmente.</p> 
+<blockquote>
+    <p>El <b>W3C</b> es un organismo internacional de estandarización de tecnologías Web dirigido
+    conjuntamente por el <i>Instituto Tecnológico de Massachusetts</i>, el <i>ERCIM francés</i> y la <i>Universidad de
+    Keiō en Japón</i>. Este organismo decidió que todos sus estándares fuesen libres, es decir, que los
+    pudiese utilizar todo el mundo libremente sin coste alguno, lo que sin lugar a dudas fue una de
+    las grandes razones para que la Web haya llegado a tener la importancia que tiene hoy en día.
+    </p>
+</blockquote>
+<p>En su libro Tejiendo la red, publicado en 1999, Berners-Lee explica por qué <b>la tecnología web es
+libre y gratis. Se considera al mismo tiempo el inventor y el protector de la web</b>.</p>
+</body>
+</html>
+<h6 id="ejercicio-3"><code>Ejercicio 3</code></h6>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Carácter</th>
+<th style="text-align:left">Código HTML (Entidad)</th>
+<th style="text-align:left">Número HTML (Decimal)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong><code>&lt;</code></strong></td>
+<td style="text-align:left"><code>&amp;lt;</code></td>
+<td style="text-align:left"><code>&amp;#60;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>!</code></strong></td>
+<td style="text-align:left"><em>No tiene</em></td>
+<td style="text-align:left"><code>&amp;#33;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>-</code></strong></td>
+<td style="text-align:left"><em>No tiene</em></td>
+<td style="text-align:left"><code>&amp;#45;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>;</code></strong></td>
+<td style="text-align:left"><em>No tiene</em></td>
+<td style="text-align:left"><code>&amp;#59;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>&gt;</code></strong></td>
+<td style="text-align:left"><code>&amp;gt;</code></td>
+<td style="text-align:left"><code>&amp;#62;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>&amp;</code></strong></td>
+<td style="text-align:left"><code>&amp;amp;</code></td>
+<td style="text-align:left"><code>&amp;#38;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>'</code></strong></td>
+<td style="text-align:left"><code>&amp;apos;</code></td>
+<td style="text-align:left"><code>&amp;#39;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>&quot;</code></strong></td>
+<td style="text-align:left"><code>&amp;quot;</code></td>
+<td style="text-align:left"><code>&amp;#34;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>\</code></strong></td>
+<td style="text-align:left"><em>No tiene</em></td>
+<td style="text-align:left"><code>&amp;#92;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>/</code></strong></td>
+<td style="text-align:left"><em>No tiene</em></td>
+<td style="text-align:left"><code>&amp;#47;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>©</code></strong></td>
+<td style="text-align:left"><code>&amp;copy;</code></td>
+<td style="text-align:left"><code>&amp;#169;</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong><code>€</code></strong></td>
+<td style="text-align:left"><code>&amp;euro;</code></td>
+<td style="text-align:left"><code>&amp;#8364;</code></td>
+</tr>
+</tbody>
+</table>
+<h6 id="ejercicio-4"><code>Ejercicio 4</code></h6>
+<p>Diseña una lista de definiciones para los siguientes conceptos, cuya
+definición deberás buscar en Internet.
+• URL
+• HTTP
+• TCP/IP
+• Internet
+• W3C
+• HTML</p>
+<p>Ese es el enunciado del <strong>ejercicio 4</strong>, yo hice el siguiente codigo con listas de definicion.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;es&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>EJ4<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">dl</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>URL<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>Acrónimo de <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>Uniform Resource Locator<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> (Localizador Uniforme de Recursos). Es la dirección única y
+            específica que se utiliza para identificar y localizar un recurso (como una página web, una imagen o un
+            documento) en Internet.<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>HTTP<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>Siglas de <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>Hypertext Transfer Protocol<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> (Protocolo de Transferencia de Hipertexto). Es el protocolo
+            de comunicación estándar que permite la transmisión y el intercambio de información y documentos HTML en la
+            World Wide Web.<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>TCP/IP<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>Conjunto de protocolos de red fundamentales en los que se basa Internet. <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>TCP<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> (Transmission Control
+            Protocol) se encarga de dividir la información en paquetes y reensamblarlos correctamente, mientras que
+            <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>IP<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> (Internet Protocol) gestiona el direccionamiento y el envío de dichos paquetes al destino
+            adecuado.<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>Internet<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>Red global descentralizada de ordenadores e interconexiones físicas y lógicas que utiliza la familia de
+            protocolos TCP/IP, permitiendo la comunicación e intercambio de datos a nivel mundial.<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>W3C<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>Siglas de <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>World Wide Web Consortium<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span>. Es un organismo internacional de estandarización encargado de
+            desarrollar las recomendaciones, normas y directrices técnicas para asegurar el crecimiento y la
+            accesibilidad de la Web a largo plazo (creadores de estándares como HTML y CSS).<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">dt</span>&gt;</span>HTML<span class="hljs-tag">&lt;/<span class="hljs-name">dt</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">dd</span>&gt;</span>Acrónimo de <span class="hljs-tag">&lt;<span class="hljs-name">em</span>&gt;</span>HyperText Markup Language<span class="hljs-tag">&lt;/<span class="hljs-name">em</span>&gt;</span> (Lenguaje de Marcado de Hipertexto). Es el lenguaje estándar
+            utilizado para estructurar y organizar el contenido de las páginas web mediante el uso de etiquetas.<span class="hljs-tag">&lt;/<span class="hljs-name">dd</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">dl</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+
+</div></code></pre>
+<p>Y ese codigo queda asi:</p>
+<!DOCTYPEhtml>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>EJ4&lt;/title>
+</head>
+<body>
+    <dl>
+        <dt>URL</dt>
+        <dd>Acrónimo de <em>Uniform Resource Locator</em> (Localizador Uniforme de Recursos). Es la dirección única y
+            específica que se utiliza para identificar y localizar un recurso (como una página web, una imagen o un
+            documento) en Internet.</dd>
+        <dt>HTTP</dt>
+        <dd>Siglas de <em>Hypertext Transfer Protocol</em> (Protocolo de Transferencia de Hipertexto). Es el protocolo
+            de comunicación estándar que permite la transmisión y el intercambio de información y documentos HTML en la
+            World Wide Web.</dd>
+        <dt>TCP/IP</dt>
+        <dd>Conjunto de protocolos de red fundamentales en los que se basa Internet. <em>TCP</em> (Transmission Control
+            Protocol) se encarga de dividir la información en paquetes y reensamblarlos correctamente, mientras que
+            <em>IP</em> (Internet Protocol) gestiona el direccionamiento y el envío de dichos paquetes al destino
+            adecuado.</dd>
+        <dt>Internet</dt>
+        <dd>Red global descentralizada de ordenadores e interconexiones físicas y lógicas que utiliza la familia de
+            protocolos TCP/IP, permitiendo la comunicación e intercambio de datos a nivel mundial.</dd>
+        <dt>W3C</dt>
+        <dd>Siglas de <em>World Wide Web Consortium</em>. Es un organismo internacional de estandarización encargado de
+            desarrollar las recomendaciones, normas y directrices técnicas para asegurar el crecimiento y la
+            accesibilidad de la Web a largo plazo (creadores de estándares como HTML y CSS).</dd>
+        <dt>HTML</dt>
+        <dd>Acrónimo de <em>HyperText Markup Language</em> (Lenguaje de Marcado de Hipertexto). Es el lenguaje estándar
+            utilizado para estructurar y organizar el contenido de las páginas web mediante el uso de etiquetas.</dd>
+    </dl>
+</body>
+</html>
+<hr>
+<p>He usado las listad de definicion ya que <code>&lt;dt&gt;</code> quiere decir <strong>TERMINO A DEFINIR</strong> mientras de <code>&lt;dd&gt;</code> es la <strong>DEFINICION</strong> del <strong>TERMINO</strong>.</p>
+<h6 id="ejercicio5"><code>Ejercicio5</code></h6>
+<p>El enunciado es el siguiente:</p>
+<ul>
+<li>Elabora una lista ordenada como la mostrada en la imagen:
+<img src="FTOEJ5.png" alt="Texto alternativo">
+Yo hice este codigo</li>
+</ul>
+<pre class="hljs"><code><div>&quot;ATENCION&quot;
+Yo tuve que buscar en internet como hacer para que la lista ordenada empezara por cierto numero,letra,etc.. 
+</div></code></pre>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;es&quot;</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>EJ5<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Listas ordenadas<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;a&quot;</span> <span class="hljs-attr">start</span>=<span class="hljs-string">&quot;4&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>DEDWD<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>DEDEDED<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>KOKGOGGFERFE<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>FWFWEFWFWEFWEFWE<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">ol</span> <span class="hljs-attr">start</span>=<span class="hljs-string">&quot;100&quot;</span> <span class="hljs-attr">reversed</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>FWEFWFEWFWEQFQQD<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>WFWEFWEFWKFWOFOWFWOO<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ol</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Y esto queda asi :</p>
+<!DOCTYPEhtml>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>EJ5&lt;/title>
+</head>
+<body>
+    <h1>Listas ordenadas</h1>
+    <ol type="a" start="4">
+        <li>DEDWD</li>
+        <li>DEDEDED</li>
+        <li>KOKGOGGFERFE</li>
+        <li>FWFWEFWFWEFWEFWE</li>
+    </ol>
+    <ol start="100" reversed>
+        <li>FWEFWFEWFWEQFQQD</li>
+        <li>WFWEFWEFWKFWOFOWFWOO</li>
+    </ol>
+</body>
+</html>
+<h6 id="ejercicio-6"><code>Ejercicio 6</code></h6>
+<p>Este ejercicio trata de imitar la siguiente imagen:
+<img src="FTOEJ6.png" alt="Texto alternativo"></p>
+<ul>
+<li>El codigo que he hecho es el siguinte:</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>EJ6<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">H1</span>&gt;</span>LISTAS NO ORDENADAS<span class="hljs-tag">&lt;/<span class="hljs-name">H1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Elemento 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Elemento 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Elemento 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Elemento 4<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span> <span class="hljs-comment">&lt;!--Los Styles se ponen a los LI ya que es lo que crea la lista (LIST INDICATION *creo...)--&gt;</span>&gt;
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: circle;&quot;</span>&gt;</span>Elemento 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: circle;&quot;</span>&gt;</span>Elemento 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: circle;&quot;</span>&gt;</span>Elemento 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: circle;&quot;</span>&gt;</span>Elemento 4<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: square;&quot;</span>&gt;</span>Elemento 1<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: square;&quot;</span>&gt;</span>Elemento 2<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: square;&quot;</span>&gt;</span>Elemento 3<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">style</span>=<span class="hljs-string">&quot;list-style-type: square;&quot;</span>&gt;</span>Elemento 4<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Y esto queda asi <strong>:</strong></p>
+<!DOCTYPEhtml>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>EJ6&lt;/title>
+</head>
+<body>
+    <H1>LISTAS NO ORDENADAS</H1>
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+    </ul>
+    <ul> <!--Los Styles se ponen a los LI ya que es lo que crea la lista (LIST INDICATION *creo...)-->
+        <li style="list-style-type: circle;">Elemento 1</li>
+        <li style="list-style-type: circle;">Elemento 2</li>
+        <li style="list-style-type: circle;">Elemento 3</li>
+        <li style="list-style-type: circle;">Elemento 4</li>
+    </ul>
+    <ul>
+            <li style="list-style-type: square;">Elemento 1</li>
+            <li style="list-style-type: square;">Elemento 2</li>
+            <li style="list-style-type: square;">Elemento 3</li>
+            <li style="list-style-type: square;">Elemento 4</li>
+    </ul>
+</body>
+</html>
+<p>Y lo tendriamos acabado</p>
+<h6 id="ejercicio-7"><code>Ejercicio 7</code></h6>
+<p>En este ejercicio hay que pasar a HTML lo que vemos en la siguente imagen.
+<img src="FTOEJ7.png" alt="Texto alternativo">
+El codigo que yo he hecho es el siguiente <strong>:</strong></p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>EJ7<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Barclona<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Mataron<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Sabadeell<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Tarragnoa<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Reus<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Saoul<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Cambris<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Lleida<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span>Girona<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Y asi es como queda el codigo:</p>
+<!DOCTYPEhtml>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>EJ7&lt;/title>
+</head>
+<body>
+    <ul>
+        <li>Barclona</li>
+            <ul>
+                <li>Mataron</li>
+                <li>Sabadeell</li>
+            </ul>
+        <li>Tarragnoa</li>
+            <ul>
+                <li>Reus</li>
+                <li>Saoul</li>
+                <li>Cambris</li>
+            </ul>
+        <li>Lleida</li>
+        <li>Girona</li>
+    </ul>
+</body>
+</html>
+<h6 id="ejercicio-8"><code>Ejercicio 8</code></h6>
+<p>Para este ejercicio nos piden lo siguiente, con ayuda de <strong>CSS</strong>  que nos pasa el propio profesor hay que hacer una <strong>tabla</strong> en <strong>HTML</strong></p>
+<ul>
+<li>La tabla es la siguiente:
+<img src="FTOEJ8.png" alt="Texto alternativo">
+Para que tenga ese <strong>estilo</strong> nos pasa un codigo CSS el cual tiene eso de codigo:</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-selector-tag">table</span>{
+<span class="hljs-attribute">border-collapse</span>:}
+collapse;
+<span class="hljs-selector-tag">td</span>{
+<span class="hljs-attribute">border</span>:<span class="hljs-number">1px</span> solid <span class="hljs-number">#000</span>;
+<span class="hljs-attribute">padding</span>:<span class="hljs-number">25px</span>;
+<span class="hljs-attribute">background-color</span>:<span class="hljs-number">#ccc</span>;
+}
+</div></code></pre>
+<p>Y nosotros tenemos que hacer un codigo HTML y mi codigo quedaba asi:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;EJ8.css&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>EJ8<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">table</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>A<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>B<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>C<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>D<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">TR</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>E,I<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-comment">&lt;!--Esto es para unir las columnas--&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>F<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">colspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>G,H<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span><span class="hljs-comment">&lt;!--Esto es para unir las filas--&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">TR</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>J<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span> <span class="hljs-attr">rowspan</span>=<span class="hljs-string">&quot;2&quot;</span>&gt;</span>K,O<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>L<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">tr</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>M<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>N<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">td</span>&gt;</span>P<span class="hljs-tag">&lt;/<span class="hljs-name">td</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">tr</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Vale en los comentarios no lo he puesto, pero si nos fijamos cuando hacemos un <em><strong>ROWSPAN</strong></em> o <em><strong>COLESPAN</strong></em> luego en la fila de abajo no hace falta hacer las 4 posiciones ya que se han unido con las de arriba.</p>
+<p>Y esto queda asi <strong>:</strong></p>
+<!DOCTYPEhtml>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="EJ8.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>EJ8&lt;/title>
+</head>
+<body>
+    
+    <table>
+        <tr>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+        </tr>
+        <TR>
+            <td rowspan="2">E,I</td><!--Esto es para unir las columnas-->
+            <td>F</td>
+            <td colspan="2">G,H</td><!--Esto es para unir las filas-->
+        </TR>
+        <tr>
+            <td>J</td>
+            <td rowspan="2">K,O</td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>M</td>
+            <td>N</td>
+            <td>P</td>
+        </tr>
+    </table>
+</body>
+</html>
+<h6 id="ejercicio-9"><code>Ejercicio 9</code></h6>
+<p>En este ejercicio se nos pide que hagamos un formulario y que quede de esta manera:
+<img src="FTOEJ9.png" alt="Texto alternativo">
+El codigo que he hecho\elaborado es el siguiente:</p>
+<pre class="hljs"><code><div><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Ej9<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>FORMULARIO D&#x27;INSCRIPCION CYBERWALL<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;Nombre&quot;</span>&gt;</span>Name:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;Nom y Apell&quot;</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;NOM Y APE&quot;</span>&gt;</span><span class="hljs-comment">&lt;!--El placeholder es para informar a el cliente.--&gt;</span>  <span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;Creacion&quot;</span>&gt;</span>Create a user name:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;user&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;passw&quot;</span>&gt;</span>Create the password:<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;passw&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">LABel</span>&gt;</span>Birthday:<span class="hljs-tag">&lt;/<span class="hljs-name">LABel</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;date&quot;</span><span class="hljs-attr">placeholder</span>=<span class="hljs-string">&quot;dd/mm/aaaa&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;Me&quot;</span>&gt;</span>I am <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;me&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;num&quot;</span>&gt;</span>Mobile phone<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;text&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">&quot;lvl&quot;</span>&gt;</span>Select yor English level(0-10)<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;range&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;lvl&quot;</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;&quot;</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;button&quot;</span> <span class="hljs-attr">value</span>=<span class="hljs-string">&quot;Sing me up&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</div></code></pre>
+<p>Y este codigo queda tal que asi:</p>
+<!DOCTYPEhtml>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    &lt;title>Ej9&lt;/title>
+</head>
+<body>
+    <h1>FORMULARIO D'INSCRIPCION CYBERWALL</h1>
+    <form action="">
+        <label for="Nombre">Name:</label><br>
+        <input type="text" name="Nom y Apell" placeholder="NOM Y APE"><!--El placeholder es para informar a el cliente.-->  <br>
+        <label for="Creacion">Create a user name:</label><br>
+        <input type="text" name="user" id=""><br>
+        <label for="passw">Create the password:</label><br>
+        <input type="password" name="passw" id=""><br><br>
+        <LABel>Birthday:</LABel>
+        <input type="date"placeholder="dd/mm/aaaa"><br>
+        <label for="Me">I am </label>
+        <input type="text" name="me" id=""><br>
+        <label for="num">Mobile phone</label><br>
+        <input type="text"><br>
+        <label for="lvl">Select yor English level(0-10)</label><br>
+        <input type="range" name="lvl" id=""><br>
+        <input type="button" value="Sing me up">
+    </form>
+</body>
+</html> 
+<p><code>De: Diego De Leon Navarro</code></p>
+
+</body>
+</html>
