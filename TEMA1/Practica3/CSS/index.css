@@ -1,0 +1,34 @@
+body{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+article{
+    display: flex;
+    flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+
+}
+
+.ej1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ej2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+table,tr,td{
+    margin-top: 50px;
+    size: 50%;
+    border: 2px solid black;
+    font-size: 50px;
+}
