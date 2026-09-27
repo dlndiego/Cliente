@@ -1,7 +1,7 @@
-let boton = document.getElementById("btnObtener");
+let boton = document.getElementById("btnObtener1");
 
 boton.addEventListener('click', () => {
-    let numero = document.getElementById("cadenaSuministrada").value;
+    let numero = document.getElementById("cadenaSuministrada1").value;
     conversion(numero);
 });
 
@@ -51,7 +51,7 @@ function conversion(numero){
         }else if (i == 1){
             tabla[i].textContent = octal;
         }else if (i == 2) {
-           tabla.textContent = hexadecimal; 
+           tabla[i].textContent = hexadecimal; 
         }
         
     }
