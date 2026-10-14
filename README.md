@@ -48,5 +48,5 @@ data.push({name: "Julia", phone: "633232323", age: 37});
 >console.log(data);
 >
 >```
->![FOTO DEL CONSOLE LOG](TEMA1/Unidad%203/Practica1/>IMG/console.log1.png)
+>![FOTO DEL CONSOLE LOG](TEMA1/Unidad%203/Practica1/IMG/console.log1.png)
 >
