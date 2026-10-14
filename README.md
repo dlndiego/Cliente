@@ -43,10 +43,65 @@ data.push({name: "Julia", phone: "633232323", age: 37});
 ```
 
 2) Comprobamos en el console.log ( data ) que se han añadido:
->
->```js
->console.log(data);
->
->```
->![FOTO DEL CONSOLE LOG](TEMA1/Unidad%203/Practica1/IMG/console.log1.png)
->
+   
+```js
+console.log(data);
+
+```
+
+![FOTO DEL CONSOLE LOG](TEMA1/Unidad%203/Practica1/IMG/console.log1.png)
+
+3) Ordena el vector por edad, comprueba el resultado:
+
+```js
+//ordenamos de menor a mayor por edad
+data.sort((a, b) => a.age - b.age);
+
+//Mostramos por consola el array ordenado
+data.forEach((persona) => {
+  // Manejamos que algunos tengan 'phone' y otros 'telephone'
+  let telefono = persona.telephone || persona.phone;
+  console.log(`${persona.name} tiene ${persona.age} años y su teléfono es ${telefono}`);
+});
+```
+
+Al recorrerlo nos fijamos en que algunos usuarios tienen PHONE y otros TELEPHONE, asi que hacemos el `or` para que filtre ambos casos.
+
+Y esto queda asi: 
+![ensiende el text](TEMA1/Unidad%203/Practica1/IMG/ordenadorEdad.png)
+
+4) Ordenamos por nombre, comprobamos el resultado: 
+
+```js
+// Ordenamos por nombre alfabéticamente
+data.sort((a, b) => a.name.localeCompare(b.name));
+
+//Mostramos por consola el array ordenado por nombre
+console.log("Ordenado por nombre:");
+data.forEach((persona) => {
+  let telefono = persona.telephone || persona.phone;
+  console.log(`${persona.name} tiene ${persona.age} años y su teléfono es ${telefono}`);
+});
+```
+
+Y esto queda asi:
+![](TEMA1/Unidad%203/Practica1/IMG/ordenadoPorNombre.png)
+
+5) Crea y muestra un nuevo vector que contenga solo los mayores de 30 años.
+
+```js
+/ creamos un array con los nombres de las personas mayores de 30 años
+let mayoresDe30 = data.filter(persona => persona.age > 30);
+console.log("Personas mayores de 30 años:\n");
+mayoresDe30.forEach((persona) => {
+    let telefono = persona.telephone || persona.phone;
+    console.log(`${persona.name} tiene ${persona.age} años y su teléfono es ${telefono}`);
+});
+```
+
+Y esto queda asi:
+![](TEMA1/Unidad%203/Practica1/IMG/Mayores30.png)
+
+---
+
+### Ejercicio 2
