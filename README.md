@@ -105,3 +105,46 @@ Y esto queda asi:
 ---
 
 ### Ejercicio 2
+
+#### `ENUNCIADO:`
+
+1. Crea un array llamado valores que contenga números, algunos de los cuales son duplicados. Utiliza un Set para crear un nuevo array que contenga solo los números únicos y luego imprímelo.
+
+#### `RESPUESTA:`
+
+Array con numeros duplicados:
+
+`- CODIGO:`
+```js
+let valores = Array(4,4,3,2,4,1,2,3,4,10,29,40,51);
+
+console.log("Numeros de el array con repetidos");
+for (let i = 0; i < valores.length; i++) {
+    console.log(valores[i]+"\n");
+}
+```
+y comprobamos en el **console.log** y esto se muestra asi: 
+
+![alt text](TEMA1/Unidad%203/Practica1/IMG/arrayConRepetidos.png)
+
+Ahora creamos el set y metemos los numeros y los mostramos:
+
+```js
+//Creamos el set
+let sinRepes = new Set();
+for (let i = 0; i < valores.length; i++) {
+    //metemos dentro del set los valores del array
+    sinRepes.add(valores[i]);
+}
+console.log("\n");
+//Mostramos el set por console log
+console.log("Numeros sin repes");
+console.log("\n");
+sinRepes.forEach(nums => {
+    console.log(nums +" ");
+});
+```
+
+y esto queda asi: 
+
+![](TEMA1/Unidad%203/Practica1/IMG/arraySinRepes.png)
