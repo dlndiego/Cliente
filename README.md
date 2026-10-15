@@ -148,3 +148,144 @@ sinRepes.forEach(nums => {
 y esto queda asi: 
 
 ![](TEMA1/Unidad%203/Practica1/IMG/arraySinRepes.png)
+
+### Ejercicio 3
+
+#### `ENUNCIADO:`
+
+1. Crea un Map que almacene nombres como claves y edades como valores. Luego, agrega algunos nombres y edades, actualiza la edad de uno de ellos, y finalmente imprime todos los nombres con sus edades.
+   
+#### `RESPUESTA:`
+
+- Creamos el mapa y guardamos las claves y los valores:
+```js
+let mapa = new Map();
+
+// Añadir elementos al mapa
+mapa.set("Juan", 32);
+mapa.set("Paco", 26);
+mapa.set("Manolo", 42);
+mapa.set("Martin", 19);
+mapa.set("Diego", 18);
+mapa.set("Dani", 21);
+mapa.set("Manuel", 30);
+```
+- Añadimos algunos mas:
+```js
+let mapa = new Map();
+
+// Añadir elementos al mapa
+mapa.set("Juan", 32);
+mapa.set("Paco", 26);
+mapa.set("Manolo", 42);
+mapa.set("Martin", 19);
+mapa.set("Diego", 18);
+mapa.set("Dani", 21);
+mapa.set("Manuel", 30);
+
+// Aañadimos algun elemento mas
+mapa.set("Alberto", 25);
+```
+- Actualizamos la edad de alguna persona:
+```js
+let mapa = new Map();
+
+// Añadir elementos al mapa
+mapa.set("Juan", 32);
+mapa.set("Paco", 26);
+mapa.set("Manolo", 42);
+mapa.set("Martin", 19);
+mapa.set("Diego", 18);
+mapa.set("Dani", 21);
+mapa.set("Manuel", 30);
+
+// Aañadimos algun elemento mas
+mapa.set("Alberto", 25);
+
+//Actualizamos un elemento
+mapa.set("Dani", 22);
+```
+- Y ahora mostramos todos los nombres con las edades:
+```js
+let mapa = new Map();
+
+// Añadir elementos al mapa
+mapa.set("Juan", 32);
+mapa.set("Paco", 26);
+mapa.set("Manolo", 42);
+mapa.set("Martin", 19);
+mapa.set("Diego", 18);
+mapa.set("Dani", 21);
+mapa.set("Manuel", 30);
+
+// Aañadimos algun elemento mas
+mapa.set("Alberto", 25);
+
+//Actualizamos un elemento
+mapa.set("Dani", 22);
+
+//Mostramos el usuario con su edad
+for (let [nombre, edad] of mapa) {
+    console.log(`${nombre} tiene ${edad} años`);
+    console.log("\n");
+}
+```
+- Y esto se muestra en el **console.log** y queda asi:
+![](TEMA1/Unidad%203/Practica1/IMG/mapaConEdades.png)
+
+### Ejercicio 4
+
+#### `ENUNCIADO:`
+
+1. Mostrar por consola 50 combinaciones aleatorias de la lotería primitiva. Las combinaciones son 6 números del 1 al 49, pero debe tenerse en cuenta que no se pueden repetir los números en una misma combinación
+   
+#### `RESPUESTA:`
+
+- Creamos la combinacion de 6 numeros del 1 al 49:
+```js
+//Generamos la combinación aleatoria de 6 números entre 1 y 49
+function generarCombinacion() {
+    const numeros = new Set();
+    while (numeros.size < 6) {
+        const numero = Math.floor(Math.random() * 49) + 1;
+        numeros.add(numero);
+    }
+    // Convertimos el Set a un array y lo ordenamos de menor a mayor
+    return Array.from(numeros).sort((a, b) => a - b);
+}
+```
+- Comparamos arrays para comprobar que no tengan la misma combinacion:
+```js
+//Comparamos combinaciones para asegurarnos de que no se repitan
+function arraysIguales(arr1, arr2) {
+    if (arr1.length !== arr2.length) return false;
+    for (let i = 0; i < arr1.length; i++) {
+        if (arr1[i] !== arr2[i]) return false;
+    }
+    return true;
+}
+```
+- Y ahora hacemos las 50 combinaciones: 
+```js
+//Creamos 50 combinaciones aleatorias de la loteria primitiva
+function generarCombinaciones() {
+    const combinaciones = [];
+    while (combinaciones.length < 50) {
+        const combinacion = generarCombinacion();
+        if (!combinaciones.some(c => arraysIguales(c, combinacion))){//some revisa las combinaciones que ya estan guaradas
+            combinaciones.push(combinacion);
+        }
+    }
+    return combinaciones;
+}
+```
+- Y esto se recorre/muestra de esta manera:
+```js
+// Generamos las combinaciones y las mostramos por consola
+const combinaciones = generarCombinaciones();
+combinaciones.forEach((combinacion, index) => {
+    console.log(`Combinación ${index + 1}: ${combinacion.join(", ")}`);
+}); 
+```
+- Y esto queda de esta manera:
+![](TEMA1/Unidad%203/Practica1/IMG/combinaicion.png)
