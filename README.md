@@ -288,4 +288,5 @@ combinaciones.forEach((combinacion, index) => {
 }); 
 ```
 - Y esto queda de esta manera:
+  
 ![](TEMA1/Unidad%203/Practica1/IMG/combinaicion.png)
