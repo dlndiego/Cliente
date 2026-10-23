@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #0f172a; /* Fondo oscuro moderno */
+    color: #e2e8f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    padding: 20px;
+}
+
+/* Contenedor principal que ocupa gran parte de la pantalla */
+.container {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+    max-width: 800px;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Apartado 1: Cabecera */
+.header-section {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    padding: 2rem;
+    text-align: center;
+}
+
+.header-section h1 {
+    font-size: 1.8rem;
+    color: #ffffff;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.header-section p {
+    color: #bfdbfe;
+    font-size: 1rem;
+}
+
+/* Apartado 2: Cuerpo / Contenido */
+.content-section {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+}
+
+.content-section > p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Apartado 3: Caja de Resultados */
+#resultado {
+    padding: 1.5rem;
+    background-color: #0f172a;
+    border: 1px solid #334155;
+    border-left: 6px solid #3b82f6;
+    border-radius: 10px;
+    text-align: left;
+}
+
+#resultado h3 {
+    font-size: 1.2rem;
+    color: #60a5fa;
+    margin-bottom: 0.8rem;
+}
+
+#resultado p {
+    color: #e2e8f0;
+    font-size: 1rem;
+    line-height: 1.6;
+    word-break: break-word;
+}

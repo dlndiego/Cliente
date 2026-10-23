@@ -290,3 +290,283 @@ combinaciones.forEach((combinacion, index) => {
 - Y esto queda de esta manera:
   
 ![](TEMA1/Unidad%203/Practica1/IMG/combinaicion.png)
+
+---
+
+## [Practica 4](TEMA1/Unidad%203/Practica2/)
+
+
+### Ejercicio 1.1
+
+##### `ENUNCIADO:`
+Crea una función tradicional que reciba un número y retorne su cuadrado. Luego, usa esa función para mostrar el cuadrado de 5 en la consola.
+
+##### `RESPUESTA:`
+
+Creamos la función tradicional que calcula el cuadrado y la probamos pasándole el número 5:
+
+```js
+function calcularCuadrado(numero) {
+    return numero * numero;
+}
+
+// Probamos con el 5
+console.log(calcularCuadrado(5));
+```
+
+Y esto queda asi:
+![](TEMA1/Unidad%203/Practica2/IMG/1.1.png)
+
+### Ejercicio 1.2
+
+##### `ENUNCIADO:`
+Crea una función anónima autoinvocada que defina una variable llamada contador y la incremente en cada invocación. Luego, intenta acceder a la variable contador fuera de la función y observa lo que sucede
+
+##### `RESPUESTA:`
+
+Escribimos la función autoinvocada definiendo la variable de manera interna:
+
+```js
+(function() {
+    let cont = 0;
+    cont++;
+    console.log("Contador :", cont);
+})();
+```
+
+Y esto queda de esta manera: 
+
+![](TEMA1/Unidad%203/Practica2/IMG/1.2.png)
+
+
+### Ejercicio 1.3
+
+##### `ENUNCIADO:`
+Crea una función autoinvocada que reciba dos parámetros: una cadena de texto y un número. Dentro de la función, concatena la cadena con el número y muestra el resultado en consola.
+
+##### `RESPUESTA:`
+
+Pasamos los dos argumentos directamente al invocar la función:
+
+```js
+(function(cad, num) {
+    let resultado = cad + num;
+    console.log(resultado);
+})("El número total es: ", 10);
+```
+
+Y esto queda asi:
+
+![](TEMA1/Unidad%203/Practica2/IMG/1.3.png)
+
+### Ejercicio 1.4
+
+##### `ENUNCIADO:`
+Crea una función flecha que sirva para devolver verdadero si un número es par o falso si no lo es. Asigna esa función a una variable y prueba la función para ver que responde correctamente.
+
+##### `RESPUESTA:`
+
+Creamos la función flecha usando el operador módulo (%):
+
+```js
+const esPar = num => num % 2 === 0;
+
+console.log(esPar(4)); 
+console.log(esPar(7));
+```
+
+Y esto queda asi:
+
+![](TEMA1/Unidad%203/Practica2/IMG/1.4.png)
+
+### Ejercicio 2.1
+
+##### `ENUNCIADO:`
+Crea un bucle que recorra un array de números y calcule la suma de todos ellos de forma iterativa y recursiva. ¿Qué solución crees que es mejor?
+
+##### `RESPUESTA:`
+
+1. Planteamos la versión iterativa usando un **FOR**:
+
+```js
+const nums = [2, 4, 6, 8, 10];
+
+// iterativa
+function sumarIterativo(arrNums) {
+    let suma = 0;
+    for (let i = 0; i < arrNums.length; i++) {
+        suma += arrNums[i];
+    }
+    return suma;
+}
+```
+
+2. Ahora hacemos la versión recursiva:
+```js
+function sumarRecursivo(arrNums, i = 0) {
+    if (i === arrNums.length) {
+        return 0;
+    }
+    return arrNums[i] + sumarRecursivo(arrNums, i + 1);
+}
+```
+
+Y ahora mostramos las 2 versiones: 
+![](TEMA1/Unidad%203/Practica2/IMG/2.1.png)
+
+### Ejercicio 2.2
+
+##### `ENUNCIADO:`
+Tienes un array de objetos que representan productos. Usa forEach() para incrementar en un 10% el precio de cada producto.
+
+##### `RESPUESTA:`
+
+```js
+//Array
+const productos = [ 
+    { nombre: "Camiseta", precio: 20 }, 
+    { nombre: "Pantalón", precio: 30 }, 
+    { nombre: "Zapatos", precio: 50 } 
+];
+
+// 10%
+productos.forEach(producto => {
+    producto.precio *= 1.10;
+});
+
+//Mostrar
+console.log("Productos con el precio actualizado:");
+console.log(productos);
+```
+
+Y esto queda asi:
+![](TEMA1/Unidad%203/Practica2/IMG/2.2.png)
+
+### Ejercicio 2.3
+
+##### `ENUNCIADO:`
+Usa una combinación de los métodos `map(), reduce() y filter()` para procesar un array de objetos. Tienes un array de personas con sus nombres y edades, filtra a las personas mayores de 18, multiplica su edad por 2, y luego suma todas las edades.
+
+##### `RESPUESTA:`
+
+Encadenamos los tres métodos en orden:
+
+```JS
+const personas = [
+    { nombre: "Juan", edad: 17 }, 
+    { nombre: "Ana", edad: 22 }, 
+    { nombre: "Pedro", edad: 19 }, 
+    { nombre: "Laura", edad: 16 } 
+];
+
+const resultado = personas
+    .filter(persona => persona.edad > 18)
+    .map(persona => persona.edad * 2)
+    .reduce((acumulador, edad) => acumulador + edad, 0);
+
+console.log("Resultado final de la operación:", resultado);
+```
+
+Y esto queda asi: 
+![](TEMA1/Unidad%203/Practica2/IMG/2.3.png)
+
+### Practica 1 (OBLIGATORIA).
+
+##### `ENUNCIADO:`
+Crea una aplicación web que pida al usuario palabras continuamente hasta que el popup se deje vacío o se cancele.
+A continuación, se eliminarán todas las palabras repetidas y además se ordenarán en español, pero en orden inverso (de la Z a la A) y se mostrará el resultado por pantalla.
+Utilizar funciones flecha si se considera apropiado.
+Ayuda: cancelar el popup devuelve null.
+
+##### `RESPUESTA:`
+
+- Primero capturamos las palabras mediante un bucle `do...while`:
+
+```JS
+let palabras = [];
+let entrada;
+
+do {
+    entrada = prompt("Introduce palabras (deja vacío o cancela para terminar):");
+    if (entrada !== null && entrada.trim() !== "") {
+        palabras.push(entrada.trim());
+    }
+} while (entrada !== null && entrada.trim() !== "");
+```
+
+- Limpiamos los duplicados usando un `Set` y ordenamos de la Z a la A con `localeCompare`:
+  
+```js
+// Quitamos repetidos con Set y ordenamos de la Z a la A
+let palabrasUnicas = [...new Set(palabras)];
+
+let resultadoOrdenado = palabrasUnicas.sort((a, b) => 
+    b.localeCompare(a, 'es', { sensitivity: 'base' })
+);
+
+// Mostramos en la pantalla
+document.write("<h2>Resultado Práctica 1:</h2>");
+document.write("<p>" + resultadoOrdenado.join(", ") + "</p>");
+
+```
+
+Y se muestra así en la página:
+
+![](TEMA1/Unidad%203/Practica2/IMG/P1.png)
+
+> [!NOTE]
+> He añadido un css a la pagina (hecho con IA) de manera rapida para que se asemeje mas a una pagina web.
+
+### Practica 2 (OBLIGATORIA).
+
+##### `ENUNCIADO:`
+Crea una aplicación web que pida al usuario palabras continuamente hasta que el popup se deje vacío o se cancele.
+Crear una función que recibirá todas las palabras y devolverá un mapa que contenga como clave cada palabra y cuyo valor será el número de veces que aparece esa palabra en el array. Mostrar los resultados por pantalla.
+Ayuda: Como en las 2 prácticas se pide introducir las palabras y devolver el resultado de la misma forma, podéis sacar esa parte del código a un script común que utilicen las 2 prácticas (main.js).
+
+##### `RESPUESTA:`
+
+- Creamos la función que procesa el mapa de frecuencias:
+
+```JS
+function contarFrecuencias(arrayPalabras) {
+    const mapa = new Map();
+    arrayPalabras.forEach(palabra => {
+        let cantidad = mapa.get(palabra) || 0;
+        mapa.set(palabra, cantidad + 1);
+    });
+    return mapa;
+}
+```
+
+- Pedimos las palabras y volcamos los datos en el mapa: 
+  
+```js
+let palabras = [];
+let texto;
+
+do {
+    texto = prompt("Introduce una palabra para contarla (vacío/cancelar para finalizar):");
+    if (texto !== null && texto.trim() !== "") {
+        palabras.push(texto.trim());
+    }
+} while (texto !== null && texto.trim() !== "");
+
+// Llamamos a la función
+const frecuencias = contarFrecuencias(palabras);
+
+// Pintamos por pantalla
+document.write("<h2>Recuento de palabras:</h2><ul>");
+frecuencias.forEach((veces, palabra) => {
+    document.write(`<li><strong>${palabra}</strong>: se repite ${veces} vez/veces</li>`);
+});
+document.write("</ul>");
+```
+
+Y se muestra así en la página:
+
+![](TEMA1/Unidad%203/Practica2/IMG/P2.png)
+
+> [!NOTE]
+> He añadido un **css** a la pagina **(hecho con IA)** de manera rapida para que se asemeje mas a una pagina web.
+
