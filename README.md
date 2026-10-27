@@ -570,3 +570,42 @@ Y se muestra así en la página:
 > [!NOTE]
 > He añadido un **css** a la pagina **(hecho con IA)** de manera rapida para que se asemeje mas a una pagina web.
 
+---
+
+## [Practica 5 (POO)](TEMA1/POO/)
+
+#### `ENUNCIADO:`
+
+Crea objetos que representen rectángulos. Estos deben cumplir las siguientes características:
+
+- Propiedades del rectángulo: Deben tener ancho (width) y alto (height) como propiedades. Estas representarán las dimensiones del rectángulo.
+- Validación en el constructor: La construcción de los rectángulos se realizará con una función constructora que recibe dos números (ancho y alto). Si alguno es menor o igual a cero, se asignará un valor por defecto de 1.
+-  Método cambiarDimensiones: Este método recibe dos números y permite cambiar las dimensiones del rectángulo.
+-  Método calcularArea: Este método devuelve el área del rectángulo (ancho x alto).
+- Método copia: Este método devuelve un nuevo objeto que es una copia del rectángulo
+- Método comparar: Este método recibe otro rectángulo y devuelve:
+  - mayor" si el área del rectángulo actual es mayor.
+  -  "menor" si es menor.
+  -  "igual" si las áreas son iguales.
+
+#### `RESPUESTA:`
+
+- **Propiedades del rectangulo y Validacion en el constructor:**
+
+```js
+class Cuadrado{
+    
+    width=0;
+    heigth=0;
+
+    constructor(width,heigth){
+        if(width == 0 || heigth == 0){
+            alert("DEBES PONER VALORES EN LOS PARAMETROS");
+        }else{
+            this.heigth= heigth;
+            this.width=width;
+        }
+    }
+}
+```
+
