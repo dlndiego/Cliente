@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Estilos Generales y Tipografía
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: #fef7b87a; /* Fondo oscuro moderno y elegante */
+  color: #f8fafc;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Cabecera (Header)
+   ========================================================================== */
+header {
+  text-align: center;
+  max-width: 700px;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  color: #070707;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+header p {
+  color: #636364;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* ==========================================================================
+   Contenedor Principal y Tabla
+   ========================================================================== */
+main {
+  width: 100%;
+  max-width: 900px;
+}
+
+.cont1 {
+  background: #fbff8a90; /* Tarjeta contenedora con tono más claro */
+  border-radius: 16px;
+  box-shadow: 0 10px 25px -5px rgba(226, 238, 6, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  border: 1px solid #040404;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+/* Cabecera de la tabla (Funcion / Resultado) */
+table tr:first-child {
+  background-color: #f1c32e;
+  color: #f9a939; /* Acento azul brillante */
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+table tr:first-child td {
+  padding: 18px 24px;
+  font-weight: 700;
+  border-bottom: 2px solid #090909;
+}
+
+/* Separación entre filas de datos */
+table tr:not(:first-child) {
+  border-bottom: 1px solid #000000;
+}
+
+table tr:not(:first-child):last-child {
+  border-bottom: none;
+}
+
+/* Celdas generales */
+table td {
+  padding: 16px 24px;
+  font-size: 0.95rem;
+}
+
+/* Columna de la izquierda (Nombre de la función) */
+table td.info {
+  font-weight: 600;
+  color: #060606;
+  width: 35%;
+}
+
+/* Columna de la derecha (Resultados donde inyectas el JS) */
+table td:not(.info) {
+  color: #080808; /* Verde esmeralda para destacar el resultado de los objetos */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.88rem;
+}
+
+/* Efecto hover suave en las filas al pasar el ratón */
+table tr:not(:first-child):hover {
+  background-color: #eaff0015; /* Sutil destello azul al hacer hover */
+}

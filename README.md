@@ -574,6 +574,8 @@ Y se muestra así en la página:
 
 ## [Practica 5 (POO)](TEMA1/POO/)
 
+### Clase Cuadrado
+
 #### `ENUNCIADO:`
 
 Crea objetos que representen rectángulos. Estos deben cumplir las siguientes características:
@@ -598,9 +600,11 @@ class Cuadrado{
     width=0;
     heigth=0;
 
-    constructor(width,heigth){
-        if(width == 0 || heigth == 0){
-            alert("DEBES PONER VALORES EN LOS PARAMETROS");
+       constructor(width,heigth){
+        if(width <= 0 ){
+            this.width= 1;
+        }else if(heigth <= 0){
+            this.height = 1;
         }else{
             this.heigth= heigth;
             this.width=width;
@@ -608,4 +612,414 @@ class Cuadrado{
     }
 }
 ```
+
+- **Método cambiarDimensiones:**
+
+```js
+class Cuadrado{
+    
+    width=0;
+    heigth=0;
+
+    constructor(width,heigth){
+        if(width <= 0 ){
+            this.width= 1;
+        }else if(heigth <= 0){
+            this.height = 1;
+        }else{
+            this.heigth= heigth;
+            this.width=width;
+        }
+    }
+
+    cambiarDimensiones(w,h){
+        this.width=w;
+        this.heigth=h;
+    }
+
+}
+
+```
+- **Método calcularArea:**
+
+```js
+class Cuadrado{
+    
+    width=0;
+    heigth=0;
+
+    constructor(width,heigth){
+        if(width <= 0 ){
+            this.width= 1;
+        }else if(heigth <= 0){
+            this.height = 1;
+        }else{
+            this.heigth= heigth;
+            this.width=width;
+        }
+    }
+
+    cambiarDimensiones(w,h){
+        this.width=w;
+        this.heigth=h;
+    }
+
+    calculaArea(){
+        area = this.width*this.height;
+        return area;
+    }
+}
+```
+- **Método copia:**
+
+```js
+class Cuadrado{
+    
+    width=0;
+    heigth=0;
+
+    constructor(width,heigth){
+        if(width <= 0 ){
+            this.width= 1;
+        }else if(heigth <= 0){
+            this.height = 1;
+        }else{
+            this.heigth= heigth;
+            this.width=width;
+        }
+    }
+
+    cambiarDimensiones(w,h){
+        this.width=w;
+        this.heigth=h;
+    }
+
+    calculaArea(){
+        let area = Number(this.width * this.heigth);
+        console.log(area);
+        return area;
+    };
+
+    copiaRectangulo(){
+        let copia;
+        return copia= new Cuadrado(this.width,this.height);
+    }
+}
+```
+
+- **Metodo comparar:**
+```js
+class Cuadrado{
+    
+    width=0;
+    heigth=0;
+
+    constructor(width,heigth){
+        if(width <= 0 ){
+           Number(this.width= 1);
+        }else if(heigth <= 0){
+            Number(this.height = 1);
+        }else{
+            Number(this.heigth= heigth);
+            Number(this.width=width);
+        }
+        
+    }
+
+    cambiarDimensiones(w,h){
+        this.width=w;
+        this.heigth=h;
+    }
+
+    calculaArea(){
+        let area = Number(this.width * this.heigth);
+        console.log(area);
+        return area;
+    };
+
+    copiaRectangulo(){
+        let copia;
+        return copia= new Cuadrado(this.width,this.height);
+    }
+    comparar(rectangulo){
+        let area1 = this.calculaArea();
+        let area2 = rectangulo.calculaArea();
+        if(area1 > area2){
+            return "MAYOR";
+        }
+        if(area1 < area2){
+            return "MENOR";
+        }
+        return "IGUALES";
+    }
+}
+```
+
+Este seria el codigo completo de la clase, luego le hemos añadido el **DOM**:
+
+```js
+class Cuadrado{
+    
+    width=0;
+    heigth=0;
+
+    constructor(width,heigth){
+        if(width <= 0 ){
+           Number(this.width= 1);
+        }else if(heigth <= 0){
+            Number(this.height = 1);
+        }else{
+            Number(this.heigth= heigth);
+            Number(this.width=width);
+        }
+        
+    }
+
+    cambiarDimensiones(w,h){
+        this.width=w;
+        this.heigth=h;
+    }
+
+    calculaArea(){
+        let area = Number(this.width * this.heigth);
+        console.log(area);
+        return area;
+    };
+
+    copiaRectangulo(){
+        let copia = new Cuadrado(this.width,this.height);
+        return copia;
+    }
+
+    comparar(rectangulo){
+        let area1 = this.calculaArea();
+        let area2 = rectangulo.calculaArea();
+        if(area1 > area2){
+            return "MAYOR";
+        }
+        if(area1 < area2){
+            return "MENOR";
+        }
+        return "IGUALES";
+    }
+}
+
+cuadr1 = new Cuadrado(4,6);
+
+document.getElementsByClassName("crearClases")[0].textContent = "cuadr1 = new Cuadrado(4,6);";
+
+cuadr1.cambiarDimensiones(6,4);
+
+document.getElementsByClassName("ValidacionConstructor")[0].textContent = "cuadr1.cambiarDimensiones(6,4);";
+
+let area = cuadr1.calculaArea();
+
+document.getElementsByClassName("calcularArea")[0].textContent = "cuadr1.calculaArea(); = " + area;
+
+cuadr2 = cuadr1.copiaRectangulo();
+
+document.getElementsByClassName("copiarRectangulo")[0].textContent = "cuadr2 = cuadr1.copiaRectangulo();";
+
+let comparacion = cuadr1.comparar(cuadr2);
+
+document.getElementsByClassName("compararRectangulos")[0].textContent = "cuadr1.comparar(cuadr2); = " + comparacion;
+```
+
+Y esto queda asi en el **HTML**:
+
+![](TEMA1/POO/img/claseCadrado.png)
+
+### Objeto Ordenadores
+
+#### `ENUNCIADO:`
+
+Crea un tipo de objeto que sirve para representar ordenadores. Sus propiedades serán:
+• Marca, un texto
+• Modelo, un texto
+• Memoria RAM, un número que indica los GB de capacidad
+• Capacidad de disco duro, un número que indica el GB de capacidad
+• Pulgadas de pantalla, un número que indica Pulgadas
+Métodos de los ordenadores:
+• toString, sirve para obtener en forma de texto los detalles del ordenador. Al crear un ordenador se pueden indicar todos sus valores, pero por defecto (sin ser obligado indicarlos) se toman como valores: 17 pulgadas, 512 GB de disco duro y 4 GB de RAM. La marca y modelo sí son necesarias.
+Crea otro tipo de objeto que represente a los ordenadores portátiles. Los que heredan todo lo que tiene un ordenador y añaden una nueva propiedad: 
+• autonomía, que es un número que expresa horas. 
+Se construye este objeto de la misma forma que los ordenadores, pero puede añadirse la autonomía, que por defecto son 4 horas. Por defecto, todos los portátiles son de 12 pulgadas, 4 GB de RAM y disco duro de 256 GB. Además, el toString de un portátil añade la autonomía a los detalles.
+Añadir código para validar que todos los requisitos funcionan correctamente y mostrar los resultados por pantalla en el DOM.
+
+#### `RESPUESTA:`
+
+Creamos el objeto con sus propiedades:
+
+```js
+const Ordenador = {
+    "marca" : "",
+    "modelo" : "",
+    "RAM" : Number(4),
+    "disk" : Number(512),  
+    "pulgadas" : Number(17),
+}
+```
+
+Ahora hacemos el inti (pra inicializar modelo y marca y los demas parametros):
+
+```js
+const Ordenador = {
+    "marca" : "",
+    "modelo" : "",
+    "RAM" : Number(4),
+    "disk" : Number(512),  
+    "pulgadas" : Number(17),
+
+
+    init(marca, modelo,ram,disk,pulgadas){
+        this.marca = marca;
+        this.modelo = modelo;
+        if(ram !== undefined ) this.RAM = ram;
+        if(disk !== undefined ) this.disk = disk;
+        if(pulgadas !== undefined ) this.pulgadas = pulgadas;
+        return this;
+    }
+}
+```
+Ahora hacemos el toString de Ordenador:
+
+```js
+const Ordenador = {
+    "marca" : "",
+    "modelo" : "",
+    "RAM" : Number(4),
+    "disk" : Number(512),  
+    "pulgadas" : Number(17),
+
+
+    init(marca, modelo,ram,disk,pulgadas){
+        this.marca = marca;
+        this.modelo = modelo;
+        if(ram !== undefined ) this.RAM = ram;
+        if(disk !== undefined ) this.disk = disk;
+        if(pulgadas !== undefined ) this.pulgadas = pulgadas;
+        return this;
+    },
+    toString() {
+       return "Marca: " + this.marca +" Modelo: " + this.modelo +" RAM: "+ this.RAM +"GB Disco: "+this.disk+"GB Pulgadas: "+this.pulgadas+"``";
+    }
+}
+```
+
+Creams portatil heredado de Ordendor y añadimos el init para sus propiedades:
+
+```js
+const Portatil = Object.create(Ordenador);
+
+Portatil.init = function(marca, modelo, ram, disk, pulgadas, autonomia){
+    Ordenador.init.call(
+        this,
+        marca,
+        modelo,
+        ram !== undefined ? ram : 4, 
+        disk !== undefined ? disk : 256, 
+        pulgadas !== undefined ? pulgadas : 12
+    );
+    this.autonomia = autonomia !== undefined ? Number(autonomia) : 4;
+    return this;
+}
+```
+
+Añadimos el toString para Portatiles heredando de Ordenadores:
+
+```js
+const Portatil = Object.create(Ordenador);
+
+Portatil.init = function(marca, modelo, ram, disk, pulgadas, autonomia){
+    Ordenador.init.call(
+        this,
+        marca,
+        modelo,
+        ram !== undefined ? ram : 4, 
+        disk !== undefined ? disk : 256, 
+        pulgadas !== undefined ? pulgadas : 12
+    );
+    this.autonomia = autonomia !== undefined ? Number(autonomia) : 4;
+    return this;
+}
+
+Portatil.toString = function(){
+    return Ordenador.toString.call(this) + "Autonomía: " +this.autonomia+ "h";
+};
+```
+
+Y el codigo completo queda de esta manera:
+
+```js
+const Ordenador = {
+    "marca" : "",
+    "modelo" : "",
+    "RAM" : Number(4),
+    "disk" : Number(512),  
+    "pulgadas" : Number(17),
+
+
+    init(marca, modelo,ram,disk,pulgadas){
+        this.marca = marca;
+        this.modelo = modelo;
+        if(ram !== undefined ) this.RAM = ram;
+        if(disk !== undefined ) this.disk = disk;
+        if(pulgadas !== undefined ) this.pulgadas = pulgadas;
+        return this;
+    },
+
+    toString() {
+       return "Marca: " + this.marca +" Modelo: " + this.modelo +" RAM: "+ this.RAM +"GB Disco: "+this.disk+"GB Pulgadas: "+this.pulgadas+"``";
+    }
+
+}
+
+const Portatil = Object.create(Ordenador);
+
+Portatil.init = function(marca, modelo, ram, disk, pulgadas, autonomia){
+    Ordenador.init.call(
+        this,
+        marca,
+        modelo,
+        ram !== undefined ? ram : 4, 
+        disk !== undefined ? disk : 256, 
+        pulgadas !== undefined ? pulgadas : 12
+    );
+    this.autonomia = autonomia !== undefined ? Number(autonomia) : 4;
+    return this;
+}
+
+Portatil.toString = function(){
+    return Ordenador.toString.call(this) + "Autonomía: " +this.autonomia+ "h";
+};
+
+urus = Object.create(Portatil);
+urus.init("Lenovo","Workstation",16,512,14,6);
+
+msi = Object.create(Ordenador);
+msi.init("MSI","4982H",32, 1000,23);
+console.log(msi.toString());
+console.log(urus.toString());
+```
+
+Estos son el resultados de las pruebas de `console.log`:
+![](TEMA1/POO/img/ej2PruebasConsoleLog.png)
+
+Y el DOM que le hemos añadido al el codigo es este:
+
+```js
+document.getElementsByClassName("crear")[0].textContent= "msi = Object.create(Ordenador);";
+document.getElementsByClassName("crear")[1].textContent= "urus = Object.create(Portatil);";
+
+
+document.getElementsByClassName("inizializar")[0].textContent= "msi.init('MSI','4982H',32, 1000,23);";
+document.getElementsByClassName("inizializar")[1].textContent= "urus.init('Lenovo','Workstation',16,512,14,6);";
+
+
+document.getElementsByClassName("toString")[0].textContent= msi.toString();
+document.getElementsByClassName("toString")[1].textContent= urus.toString();
+```
+
+Y esto queda asi en **HTML**:
+![](TEMA1/POO/img/claseOrdenadores.png)
 
