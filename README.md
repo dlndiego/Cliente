@@ -7,7 +7,7 @@
 ---
 ## Índice
 - #### [Practica 3](#practica-3)
-- #### [Practica 4](#practica-4)
+- #### [Practica 4](#practica-4-1)
 - #### [POO](#practica-5-poo)
 
 ---
