@@ -4,6 +4,11 @@
 
 > [!NOTE]
 > Esto es un **.md** para gestionar las **PRACTICAS** de ***Entornos de Desarollo en Cliente***.
+---
+## Índice
+- #### [Practica 3](#practica-3)
+- #### [Practica 4](#practica-4)
+- #### [POO](#practica-5-poo)
 
 ---
 
