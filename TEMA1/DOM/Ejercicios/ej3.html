@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+    <style>
+        .parrafo {
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #ecf0f1;
+            border: 1px solid #bdc3c7;
+            cursor: pointer;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h2>Gestión de Párrafos</h2>
+    <p class="parrafo">Párrafo 1: Clic izquierdo para ocultar, clic derecho para eliminar.</p>
+    <p class="parrafo">Párrafo 2: Clic izquierdo para ocultar, clic derecho para eliminar.</p>
+    <p class="parrafo">Párrafo 3: Clic izquierdo para ocultar, clic derecho para eliminar.</p>
+    
+    <button id="btnReaparecer">Reaparecer</button>
+
+    <script>
+        const parrafos = document.querySelectorAll('.parrafo');
+        const btnReaparecer = document.getElementById('btnReaparecer');
+
+        parrafos.forEach(p => {
+            // Clic izquierdo: oculta el párrafo
+            p.addEventListener('click', () => {
+                p.style.display = 'none';
+            });
+
+            // Clic derecho: elimina el elemento por completo y evita el menú contextual nativo
+            p.addEventListener('contextmenu', (e) => {
+                e.preventDefault();
+                p.remove();
+            });
+        });
+
+        // Botón reaparecer: vuelve a mostrar los elementos ocultos
+        btnReaparecer.addEventListener('click', () => {
+            const actualizados = document.querySelectorAll('.parrafo');
+            actualizados.forEach(p => {
+                if (p.style.display === 'none') {
+                    p.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

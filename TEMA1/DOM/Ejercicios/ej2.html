@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+    <style>
+        #coordenadas {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+    <h2>Seguimiento del Ratón</h2>
+    <p id="coordenadas">Mueve el ratón por la página...</p>
+
+    <script>
+        const pCoordenadas = document.getElementById('coordenadas');
+
+        // Escuchamos el movimiento del ratón en todo el documento
+        document.addEventListener('mousemove', (evento) => {
+            const x = evento.clientX;
+            const y = evento.clientY;
+            pCoordenadas.textContent = `Posición actual del ratón -> X: ${x}px, Y: ${y}px`;
+        });
+    </script>
+</body>
+</html>
