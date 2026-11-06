@@ -9,6 +9,7 @@
 - #### [Practica 3](#practica-3)
 - #### [Practica 4](#practica-4-1)
 - #### [POO](#practica-5-poo)
+- #### [DOM](#practica-6-dom)
 
 ---
 
@@ -1028,3 +1029,497 @@ document.getElementsByClassName("toString")[1].textContent= urus.toString();
 Y esto queda asi en **HTML**:
 ![](TEMA1/POO/img/claseOrdenadores.png)
 
+---
+
+## [Practica 6 (DOM)](TEMA1/DOM/)
+
+>[!NOTE]
+> En esta practica he hech un dosier donde te lleva directamente a los ejercicios, es decir, que si quieres revisar la estetica el codigo en [dosier.html](TEMA1/DOM/DosierEj.html) tendras todos los ejercicios.
+
+### Ejercicio 1
+
+#### `ENUNCIADO:`
+
+Haz un programa que cuando se pulse un botón “Nuevo número”, añada un elemento con un número aleatorio a una lista desordenada (elemento UL).
+
+#### `RESPUESTA:`
+
+Este es el html que hemos creado para el ejercicio 1:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 1</title>
+</head>
+
+<body>
+    <h2>Generador de Números Aleatorios</h2>
+    <button id="btnNuevo">Nuevo número</button>
+    <ul id="listaNumeros"></ul>
+
+    <script src="JS/ej1.js" defer></script>
+</body>
+
+</html>
+```
+
+Y el JS que hemos creado para el ejercicio 1 es este:
+
+1. Recogemos los elementos necesarios:
+```js
+const btn = document.getElementById('btnNuevo');
+const lista = document.getElementById('listaNumeros');
+```
+
+2. Hacemos el evento que genera el numero aleatorio y lo añade a la lista:
+```js
+btn.addEventListener('click', () => {
+    // Generamos un numero aleatorio del 1 y 100
+    const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+
+    // Creamos el elemento <li> y lo añadimos
+    const li = document.createElement('li');
+    li.textContent = "Número aleatorio: " + numeroAleatorio;
+    lista.appendChild(li);
+});
+```
+
+Y este es codigo completo de [ej1.js](TEMA1/DOM/JS/ej1.js):
+
+```js
+const btn = document.getElementById('btnNuevo');
+const lista = document.getElementById('listaNumeros');
+
+btn.addEventListener('click', () => {
+    // Generamos un numero aleatorio del 1 y 100
+    const numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+
+    // Creamos el elemento <li> y lo añadimos
+    const li = document.createElement('li');
+    li.textContent = "Número aleatorio: " + numeroAleatorio;
+    lista.appendChild(li);
+});
+```
+### Ejercicio 2
+
+#### `ENUNCIADO:`
+
+Haz un programa que mediante eventos y el uso del objeto event, te muestre en todo 
+momento la posición actual del ratón en pantalla. Para mostrarlo modificaremos de forma 
+dinámica un elemento XHTML (Ejemplo, un `<p>`) que nos muestre la posición actual del ratón.
+
+#### `RESPUESTA:`
+
+Este es el html que hemos creado para el ejercicio 2:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+
+</head>
+
+<body>
+    <h2>Seguimiento del Ratón</h2>
+    <p id="coordenadas">Mueve el ratón por la página...</p>
+
+    <script src="JS/ej2.js" defer></script>
+</body>
+
+</html>
+```
+
+Y el JS que hemos creado para el ejercicio 2 es este:
+
+1. Recogemos el elemento necesario:
+
+```js
+const pCoordenadas = document.getElementById('coordenadas');
+```
+
+2. Hacemos el evento del ratos sobre su posicion de esta manera:
+
+```js
+//moviminto del ratón en todo el documento.
+document.addEventListener('mousemove', (evento) => {
+    const x = evento.clientX;
+    const y = evento.clientY;
+    pCoordenadas.textContent = `Posición actual del ratón -> X: ${x}px, Y: ${y}px`;
+});
+```
+
+y el codigo completo de [ej2.js](TEMA1/DOM/JS/ej2.js) es este:
+
+```js
+const pCoordenadas = document.getElementById('coordenadas');
+
+//moviminto del ratón en todo el documento
+document.addEventListener('mousemove', (evento) => {
+    const x = evento.clientX;
+    const y = evento.clientY;
+    pCoordenadas.textContent = `Posición actual del ratón -> X: ${x}px, Y: ${y}px`;
+});
+```
+
+### Ejercicio 3
+
+#### `ENUNCIADO:`
+
+Haz un programa que tenga 3 elementos <p> y al hacer clic sobre ellos desaparezcan (se oculten) y al hacer clic derecho (utilizar contextmenu) los elimine. También deberá tener un
+botón “Reaparecer” que hará que aparezcan todos los elementos desaparecidos (pero no los eliminados).
+
+#### `RESPUESTA:`
+
+Este es el html que hemos creado para el ejercicio 3:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 3</title>
+
+</head>
+
+<body>
+    <h2>Gestión de Párrafos</h2>
+    <p class="parrafo">Párrafo 1: Clic izquierdo para ocultar, clic derecho para eliminar.</p>
+    <p class="parrafo">Párrafo 2: Clic izquierdo para ocultar, clic derecho para eliminar.</p>
+    <p class="parrafo">Párrafo 3: Clic izquierdo para ocultar, clic derecho para eliminar.</p>
+
+    <button id="btnReaparecer">Reaparecer</button>
+
+    <script src="JS/ej3.js" defer></script>
+</body>
+
+</html>
+```
+
+Y este es el JS que he creado para el ejercicio 3:
+
+```js
+const parrafos = document.querySelectorAll('.parrafo');
+const btnReaparecer = document.getElementById('btnReaparecer');
+```
+
+1. Hacemos el forEach para que al hacer click izquierdo desaparezca y al hacer click derecho se elimine:
+
+```js
+parrafos.forEach(p => {
+    // Clic izquierdo: oculta 
+    p.addEventListener('click', () => {
+        p.style.display = 'none';
+    });
+
+    // Clic derecho: elimina 
+    p.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        p.remove();
+    });
+});
+```
+2. Ahora hacemos el evento:
+```js
+// Botón reaparecer: construye los elementos ocultos
+btnReaparecer.addEventListener('click', () => {
+    const actualizados = document.querySelectorAll('.parrafo');
+    actualizados.forEach(p => {
+        if (p.style.display === 'none') {
+            p.style.display = 'block';
+        }
+    });
+});
+```
+
+Y este es el codigo completo de [ej3.js](TEMA1/DOM/JS/ej3.js):
+
+```js
+const parrafos = document.querySelectorAll('.parrafo');
+const btnReaparecer = document.getElementById('btnReaparecer');
+
+parrafos.forEach(p => {
+    // Clic izquierdo: oculta 
+    p.addEventListener('click', () => {
+        p.style.display = 'none';
+    });
+
+    // Clic derecho: elimina 
+    p.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        p.remove();
+    });
+});
+
+// Botón reaparecer: construye los elementos ocultos
+btnReaparecer.addEventListener('click', () => {
+    const actualizados = document.querySelectorAll('.parrafo');
+    actualizados.forEach(p => {
+        if (p.style.display === 'none') {
+            p.style.display = 'block';
+        }
+    });
+});
+```
+
+### Practica 1 `OBLIGATORIA`
+
+#### `ENUNCIADO:`
+
+Crea una página que tenga un texto que indique que al pulsar ALT+F12, se cambiará la imagen de fondo (background). El texto saldrá centrado en la página. La idea es que aparezca una pantalla negra con el texto y que hasta que el usuario no presione ALT+F12, el fondo no cambie.
+
+#### `RESPUESTA:`
+
+Este es el html que hemos creado para la practica 1:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica 1 - Fondo Aleatorio</title>
+</head>
+
+<body>
+    <div id="imagen">
+        <h1>Pulsa Alt + F12 para cambiar la imagen de fondo</h1>
+    </div>
+
+    <script src="JS/Practica1.js" defer></script>
+</body>
+
+</html>
+```
+
+Y este es el JS que hemos creado para la practica 1:
+
+1. Cogemos el elemento:
+
+```js
+const contenedor = document.getElementById('imagen');
+```
+
+2. Hacemos el evento comprobando que se pulsa el `ALT` y `F12` a la vez y cambiamos el fondo de la pagina:
+
+```js
+document.addEventListener('keydown', (e) => {
+    // Comprobamos si se pulsa la tecla Alt junto con F12
+    if (e.altKey && e.code === 'F12') {
+        e.preventDefault(); // Evita el comportamiento por defecto de la tecla si lo hubiera
+
+        // Cargamos una imagen aleatoria desde picsum
+        const urlAleatoria = `https://picsum.photos/1920/1080?random=${Math.random()}`;
+        contenedor.style.backgroundImage = `url('${urlAleatoria}')`;
+    }
+});
+```
+
+Y este es el codigo completo de [Practica1.js](TEMA1/DOM/JS/Practica1.js):
+
+```js
+document.addEventListener('keydown', (e) => {
+    // Comprobamos si se pulsa la tecla Alt junto con F12
+    if (e.altKey && e.code === 'F12') {
+        e.preventDefault(); // Evita el comportamiento por defecto de la tecla si lo hubiera
+
+        // Cargamos una imagen aleatoria desde picsum
+        const urlAleatoria = `https://picsum.photos/1920/1080?random=${Math.random()}`;
+        contenedor.style.backgroundImage = `url('${urlAleatoria}')`;
+    }
+});
+```
+
+Y esto queda asi en la pagina:
+
+![](TEMA1/DOM/IMG/obl1.png)
+
+
+### Practica 2 `OBLIGATORIA`
+
+#### `ENUNCIADO:`
+
+Muestra una página en la que muestre un formulario con dos campos: email y password, con un botón para enviar el formulario.
+Se quiere que la aplicación valide que el email y password sean válidos una vez se pierde el foco del campo y de lo contrario, muestren un mensaje de error indicando el formato esperado.
+Los formatos son:
+- Para el email: xxxx@yyyy.zzzz
+- Para el password: un texto de longitud entre 8 y 10 caracteres. 
+No hace falta hacer CSS. No puntúa lo bonita que sea la página.
+Los mensajes de error se eliminarán cuando el usuario entre a modificar de nuevo el campo.
+El botón de enviar no funcionará si las validaciones no son correctas (ponedlo en gris mientras no sean correctas)
+
+#### `RESPUESTA:`
+
+Este es el html que hemos creado para la practica 2:
+
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Práctica 2 - Validación de Formulario</title>
+</head>
+
+<body>
+    <h2>Formulario de Validación</h2>
+    <form id="miFormulario">
+        <div class="campo">
+            <label for="email">Email:</label><br>
+            <input type="text" id="email" placeholder="xxxx@yyyy.zzZZ">
+            <span id="errorEmail" class="error"></span>
+        </div>
+
+        <div class="campo">
+            <label for="password">Password (8 a 10 caracteres):</label><br>
+            <input type="password" id="password">
+            <span id="errorPassword" class="error"></span>
+        </div>
+
+        <button type="submit" id="btnEnviar" disabled style="background-color: lightgray;">Enviar</button>
+    </form>
+
+    <script src="JS/Practica1.js" defer></script>
+</body>
+
+</html>
+```
+
+Y este es el JS que hemos creado para la practica 2:
+
+1. Cogemos los elementos necesarios:
+
+```js
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const errorEmail = document.getElementById('errorEmail');
+const errorPassword = document.getElementById('errorPassword');
+const btnEnviar = document.getElementById('btnEnviar');
+```
+
+2. Hacemos la expresion y la funcion para regular para validar el email y la contraseña:
+
+```js
+const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+function validarTodo() {
+    const emailOk = regexEmail.test(emailInput.value);
+    const passOk = passwordInput.value.length >= 8 && passwordInput.value.length <= 10;
+
+    if (emailOk && passOk) {
+        btnEnviar.disabled = false;
+        btnEnviar.style.backgroundColor = '';
+    } else {
+        btnEnviar.disabled = true;
+        btnEnviar.style.backgroundColor = 'lightgray';
+    }
+}
+```
+
+3. Hacemos los eventos para validar el email y la contraseña `(blur)`:
+
+```js
+// Validación al perder el foco (blur)
+emailInput.addEventListener('blur', () => {
+    if (!regexEmail.test(emailInput.value)) {
+        errorEmail.textContent = "Formato esperado incorrecto. Ejemplo: xxxx@yyyy.zzZZ";
+    }
+    validarTodo();
+});
+
+passwordInput.addEventListener('blur', () => {
+    const len = passwordInput.value.length;
+    if (len < 8 || len > 10) {
+        errorPassword.textContent = "El password debe tener una longitud entre 8 y 10 caracteres.";
+    }
+    validarTodo();
+});
+
+// Borrar mensajes de error al volver a escribir en los campos
+emailInput.addEventListener('input', () => {
+    errorEmail.textContent = "";
+    validarTodo();
+});
+
+passwordInput.addEventListener('input', () => {
+    errorPassword.textContent = "";
+    validarTodo();
+});
+
+document.getElementById('miFormulario').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("¡Formulario validado y enviado con éxito!");
+});
+```
+
+Y este es el codigo completo de [Practica2.js](TEMA1/DOM/JS/Practica2.js):
+
+```js
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
+const errorEmail = document.getElementById('errorEmail');
+const errorPassword = document.getElementById('errorPassword');
+const btnEnviar = document.getElementById('btnEnviar');
+
+// Expresin regular: xxxx@yyyy.zzZZ
+const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+function validarTodo() {
+    const emailOk = regexEmail.test(emailInput.value);
+    const passOk = passwordInput.value.length >= 8 && passwordInput.value.length <= 10;
+
+    if (emailOk && passOk) {
+        btnEnviar.disabled = false;
+        btnEnviar.style.backgroundColor = '';
+    } else {
+        btnEnviar.disabled = true;
+        btnEnviar.style.backgroundColor = 'lightgray';
+    }
+}
+
+// Validacion al perder el foco (blur)
+emailInput.addEventListener('blur', () => {
+    if (!regexEmail.test(emailInput.value)) {
+        errorEmail.textContent = "Formato esperado incorrecto. Ejemplo: xxxx@yyyy.zzZZ";
+    }
+    validarTodo();
+});
+
+passwordInput.addEventListener('blur', () => {
+    const len = passwordInput.value.length;
+    if (len < 8 || len > 10) {
+        errorPassword.textContent = "El password debe tener una longitud entre 8 y 10 caracteres.";
+    }
+    validarTodo();
+});
+
+// Borrar mensajes de error al volver a escribir en los campos
+emailInput.addEventListener('input', () => {
+    errorEmail.textContent = "";
+    validarTodo();
+});
+
+passwordInput.addEventListener('input', () => {
+    errorPassword.textContent = "";
+    validarTodo();
+});
+
+document.getElementById('miFormulario').addEventListener('submit', (e) => {
+    e.preventDefault();
+    alert("¡Formulario validado y enviado con éxito!");
+});
+```
+
+Y esto queda asi en la pagina:
+
+1. Exito:
+![](TEMA1/DOM/IMG/obl2.png)
+
+2. Error:
+![](TEMA1/DOM/IMG/obl2Error.png)

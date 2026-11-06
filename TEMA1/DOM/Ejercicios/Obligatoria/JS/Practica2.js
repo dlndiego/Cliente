@@ -4,7 +4,7 @@ const errorEmail = document.getElementById('errorEmail');
 const errorPassword = document.getElementById('errorPassword');
 const btnEnviar = document.getElementById('btnEnviar');
 
-// Expresión regular orientada al formato xxxx@yyyy.zzZZ
+// Expresin regular : xxxx@yyyy.zzZZ
 const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 function validarTodo() {
@@ -20,7 +20,7 @@ function validarTodo() {
     }
 }
 
-// Validación al perder el foco (blur)
+// Validacion al perder el foco (blur)
 emailInput.addEventListener('blur', () => {
     if (!regexEmail.test(emailInput.value)) {
         errorEmail.textContent = "Formato esperado incorrecto. Ejemplo: xxxx@yyyy.zzZZ";
