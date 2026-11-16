@@ -10,6 +10,11 @@
 - #### [Practica 4](#practica-4-1)
 - #### [POO](#practica-5-poo)
 - #### [DOM](#practica-6-dom)
+- #### [COOKIES && ASINCROMAS](TEMA1/COOCKIES-ASINCRONAS/index.html)
+
+> [!NOTE]
+>
+> La documentacion de `COOKIES Y ASINCROMAS` las realizare despues del examen de **PHP** ya que me toma mucho mas tiempo que solo hacer los ejercicios.
 
 ---
 
