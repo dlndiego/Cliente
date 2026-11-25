@@ -22,7 +22,7 @@ function validarTodo() {
 
 // Validacion al perder el foco (blur)
 emailInput.addEventListener('blur', () => {
-    if (!regexEmail.test(emailInput.value)) {
+    if(!regexEmail.test(emailInput.value)) {
         errorEmail.textContent = "Formato esperado incorrecto. Ejemplo: xxxx@yyyy.zzZZ";
     }
     validarTodo();

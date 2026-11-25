@@ -1,0 +1,89 @@
+<article id="art">
+    <input type="text" id="nombre" placeholder="Nombre" required>
+    <input type="number" id="nota" placeholder="Nota" max="10" min="0" step="0.01">
+
+    <button id="agregar">Añadir alumno</button>
+    <button id="aprobados">Mostrar aprobados</button>
+    <button id="todos">Mostrar todos</button>
+</article>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Nota</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody id="alumnos"></tbody>
+</table>
+
+<p id="media"></p>
+
+<script>
+    let p = document.createElement("p");
+    let mostrarAprobados = document.getElementById("aprobados");
+    let añadir = document.getElementById("agregar");
+    let todos = document.getElementById("todos");
+    añadir.addEventListener('click', function () {
+        let estado;
+        let nom = document.getElementById("nombre").value;
+        let nota = document.getElementById("nota").value;
+        let cuerpo = document.getElementById("alumnos");
+        let boton = document.createElement("button");
+        let tr = document.createElement("tr");
+        let td1 = document.createElement("td");
+        let td2 = document.createElement("td");
+        let td3 = document.createElement("td");
+        let td4 = document.createElement("td");
+        if (nota >= 0 && nota <= 10) {
+            boton.textContent = "elimina";
+            cuerpo.appendChild(tr);
+            td1.textContent = nom;
+            td2.textContent = nota;
+            if (nota >= 5) {
+                estado = "APROBADO";
+                td3.style.color = "green";
+
+            } else {
+                estado = "SUSPENDIDO";
+                td3.style.color = "red";
+                tr.className = "suspendido";
+            }
+            td3.textContent = estado;
+            td4.appendChild(boton);
+            tr.appendChild(td1);
+            tr.appendChild(td2);
+            tr.appendChild(td3);
+            tr.appendChild(td4);
+            boton.addEventListener('click', function () {
+                tr.remove();
+            })
+        } else {
+            
+            let art = document.getElementById("art");
+            p.textContent = "EL VALOR DEBERIA SER ENTRO 0 - 10."
+            art.appendChild(p);
+        }
+
+    })
+
+
+
+    mostrarAprobados.addEventListener('click', function () {
+        let tr = document.querySelectorAll(".suspendido");
+        tr.forEach(element => {
+            element.style.display = "none";
+        });
+    });
+
+    todos.addEventListener('click', function () {
+        let tr = document.querySelectorAll(".suspendido");
+        tr.forEach(element => {
+            element.style.display = "table-row";
+        });
+    });
+
+
+</script>
